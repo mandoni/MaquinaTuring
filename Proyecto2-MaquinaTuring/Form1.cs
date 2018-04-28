@@ -92,8 +92,6 @@ namespace Proyecto2_MaquinaTuring
             textBoxCadena.Enabled = maquinasBox.Enabled = evalButton.Enabled = true;
         }
 
-        //Comenzar con la máquina cuatro.
-
         private void Maquina1(char[] entrada)
         {
             int posicion = 1;
@@ -448,11 +446,757 @@ namespace Proyecto2_MaquinaTuring
         private void Maquina2(char[] entrada)
         {
             int posicion = 1;
+            string textoPosicion;
+
+            ESTADOSM2:
+            switch (labelEstado.Text)
+            {
+                case "q0":
+                    goto E0M2;
+                case "q1":
+                    goto E1M2;
+                case "q2":
+                    goto E2M2;
+                case "q3":
+                    goto E3M2;
+                case "q4":
+                    goto E4M2;
+                case "q5":
+                    goto E5M2;
+                case "q6":
+                    goto E6M2;
+                case "q7":
+                    goto E7M2;
+                case "q8":
+                    goto E8M2;
+                case "q9":
+                    outputLable.Text = "Cadena aceptada";
+                    return;
+            }
+
+            E0M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion== "a")
+            {
+                labelEstado.Text = "q1";
+                cinta.Columns[posicion].HeaderText = "A";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "b")
+            {
+                labelEstado.Text = "q2";
+                cinta.Columns[posicion].HeaderText = "O";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if(textoPosicion == "c")
+            {
+                labelEstado.Text = "q3";
+                cinta.Columns[posicion].HeaderText = "C";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if(textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q7";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E1M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q1";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q4";
+                cinta.Columns[posicion].HeaderText = "X";
+                cinta.Columns.Add("B", "B");
+                cinta.Columns[posicion + 1].Width = 20;
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E2M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q2";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q5";
+                cinta.Columns[posicion].HeaderText = "Y";
+                cinta.Columns.Add("B", "B");
+                cinta.Columns[posicion + 1].Width = 20;
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E3M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q3";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q6";
+                cinta.Columns[posicion].HeaderText = "Z";
+                cinta.Columns.Add("B", "B");
+                cinta.Columns[posicion + 1].Width = 20;
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E4M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q4";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "A")
+            {
+                labelEstado.Text = "q0";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E5M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q5";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "O")
+            {
+                labelEstado.Text = "q0";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E6M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "a" || textoPosicion == "b" || textoPosicion == "c"
+                || textoPosicion == "X" || textoPosicion == "Y" || textoPosicion == "Z")
+            {
+                labelEstado.Text = "q6";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "C")
+            {
+                labelEstado.Text = "q0";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E7M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "A" || textoPosicion == "O" || textoPosicion == "C")
+            {
+                labelEstado.Text = "q7";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q8";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
+
+            E8M2:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "A")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "a";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "O")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "b";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "C")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "c";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "X")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "a";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "Y")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "b";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "Z")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "c";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q9";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM2;
         }
 
         private void Maquina3(char[] entrada)
         {
             int posicion = 1;
+            string textoPosicion;
+
+            ESTADOSM3:
+            switch (labelEstado.Text)
+            {
+                case "q0":
+                    goto E0M3;
+                case "q1":
+                    goto E1M3;
+                case "q2":
+                    goto E2M3;
+                case "q3":
+                    goto E3M3;
+                case "q4":
+                    goto E4M3;
+                case "q5":
+                    goto E5M3;
+                case "q6":
+                    goto E6M3;
+                case "q7":
+                    goto E7M3;
+                case "q8":
+                    goto E8M3;
+                case "q9":
+                    goto E9M3;
+                case "q10":
+                    goto E10M3;
+                case "q11":
+                    outputLable.Text = "Cadena aceptada";
+                    return;
+            }
+
+            E0M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "I")
+            {
+                labelEstado.Text = "q0";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "*")
+            {
+                labelEstado.Text = "q1";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E1M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C")
+            {
+                labelEstado.Text = "q1";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if(textoPosicion == "=")
+            {
+                labelEstado.Text = "q10";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "I")
+            {
+                labelEstado.Text = "q2";
+                cinta.Columns[posicion].HeaderText = "C";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E2M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C" || textoPosicion == "*" || textoPosicion == "I")
+            {
+                labelEstado.Text = "q2";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B" || textoPosicion == "X")
+            {
+                labelEstado.Text = "q3";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E3M3:
+            if (cinta.Columns[posicion].HeaderText == "I")
+            {
+                labelEstado.Text = "q4";
+                cinta.Columns[posicion].HeaderText = "X";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E4M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C" || textoPosicion == "I" || textoPosicion == "*"
+                || textoPosicion == "=")
+            {
+                labelEstado.Text = "q4";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q5";
+                cinta.Columns[posicion].HeaderText = "I";
+                cinta.Columns.Add("B", "B");
+                cinta.Columns[posicion + 1].Width = 20;
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E5M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C" || textoPosicion == "I" || textoPosicion == "*"
+                || textoPosicion == "=")
+            {
+                labelEstado.Text = "q5";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "X")
+            {
+                labelEstado.Text = "q6";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E6M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "I")
+            {
+                labelEstado.Text = "q7";
+                cinta.Columns[posicion].HeaderText = "X";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "*")
+            {
+                labelEstado.Text = "q9";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E7M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C" || textoPosicion == "I" || textoPosicion == "*"
+                || textoPosicion == "=")
+            {
+                labelEstado.Text = "q7";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q8";
+                cinta.Columns[posicion].HeaderText = "I";
+                cinta.Columns.Add("B", "B");
+                cinta.Columns[posicion + 1].Width = 20;
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E8M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C" || textoPosicion == "I" || textoPosicion == "*"
+                || textoPosicion == "=")
+            {
+                labelEstado.Text = "q8";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "X")
+            {
+                labelEstado.Text = "q6";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E9M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "X")
+            {
+                labelEstado.Text = "q9";
+                cinta.Columns[posicion].HeaderText = "I";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "B")
+            {
+                labelEstado.Text = "q0";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
+
+            E10M3:
+            textoPosicion = cinta.Columns[posicion].HeaderText;
+            if (textoPosicion == "C")
+            {
+                labelEstado.Text = "q10";
+                cinta.Columns[posicion].HeaderText = "I";
+                cinta[posicion--, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else if (textoPosicion == "*")
+            {
+                labelEstado.Text = "q11";
+                cinta[posicion++, 0].Style.BackColor = Color.White;
+                cinta[posicion, 0].Style.BackColor = Color.Cyan;
+                mov++;
+                labelMovimientos.Text = mov.ToString();
+                this.Refresh();
+                Thread.Sleep(500);
+            }
+            else
+            {
+                outputLable.Text = "Cadena no válida";
+                return;
+            }
+            goto ESTADOSM3;
         }
 
         private void Maquina4(char[] entrada)
