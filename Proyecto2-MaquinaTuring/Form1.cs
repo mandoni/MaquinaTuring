@@ -376,6 +376,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -405,6 +410,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -434,6 +444,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -647,6 +662,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -677,6 +697,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -707,6 +732,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -1067,6 +1097,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -1130,6 +1165,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -1205,17 +1245,19 @@ namespace Proyecto2_MaquinaTuring
             string textoPosicion;
 
             ESTADOSM1:
-            if (labelEstado.Text == "q0")
-                goto E0M1;
-            else if (labelEstado.Text == "q1")
-                goto E1M1;
-            else if (labelEstado.Text == "q2")
-                goto E2M1;
-            else if (labelEstado.Text == "q3")
+            switch (labelEstado.Text)
             {
-                outputLable.Text = "Cadena aceptada";
+                case "q0":
+                    goto E0M1;
+                case "q1":
+                    goto E1M1;
+                case "q2":
+                    goto E2M1;
+                case "q3":
+                    outputLable.Text = "Cadena aceptada";
                 return;
             }
+
             E0M1:
             if(cinta.Columns[posicion].HeaderText == "I")
             {
@@ -1310,6 +1352,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -1430,6 +1477,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
@@ -1533,6 +1585,11 @@ namespace Proyecto2_MaquinaTuring
                 labelMovimientos.Text = mov.ToString();
                 this.Refresh();
                 Thread.Sleep(500);
+                if (mov >= 5731)
+                {
+                    outputLable.Text = "Error: la cadena podría ser infinita.";
+                    return;
+                }
             }
             else
             {
